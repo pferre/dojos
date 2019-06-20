@@ -5,6 +5,7 @@ Completed exercises to date:
 * FizzBuzz
 * Leap Year
 * Nth Fibonacci
+* Stats Calculator
 
 If you pull this repository, you will need to retrieve its dependencies 
 via composer (phpspec) and run the test suite:
