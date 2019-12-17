@@ -1,0 +1,10 @@
+version: '3'
+services:
+  dojos:
+    build: .
+    volumes:
+      - .:/usr/src/dojos
+    tty: true
+    stdin_open: true
+  php:
+    image: "php:7.3-alpine"

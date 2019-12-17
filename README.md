@@ -11,5 +11,16 @@ If you pull this repository, you will need to retrieve its dependencies
 via composer (phpspec) and run the test suite:
 
 ```bash
-vendor/bin phpspec run --format=pretty
+vendor/bin/phpspec run --format=pretty
+```
+
+Docker
+
+If you don't want to install php locally, I've added a Dockerfile and a
+docker-compose file so that you can build tests on the fly via a docker
+container.
+
+```bash
+docker build -t php-dojos .
+docker run -it php-dojos php vendor/bin/phpspec run
 ```
