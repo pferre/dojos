@@ -6,6 +6,7 @@ Completed exercises to date:
 * Leap Year
 * Nth Fibonacci
 * Stats Calculator
+* Roman Numerals
 
 If you pull this repository, you will need to retrieve its dependencies 
 via composer (phpspec) and run the test suite:
