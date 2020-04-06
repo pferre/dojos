@@ -8,6 +8,7 @@ Completed exercises to date:
 * Stats Calculator
 * Roman Numerals
 * Prime factors
+* String to boolean calculator
 
 If you pull this repository, you will need to retrieve its dependencies 
 via composer (phpspec) and run the test suite:
