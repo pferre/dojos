@@ -7,6 +7,7 @@ Completed exercises to date:
 * Nth Fibonacci
 * Stats Calculator
 * Roman Numerals
+* Prime factors
 
 If you pull this repository, you will need to retrieve its dependencies 
 via composer (phpspec) and run the test suite:
