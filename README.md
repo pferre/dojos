@@ -24,6 +24,11 @@ docker-compose file so that you can build tests on the fly via a docker
 container.
 
 ```bash
-docker build -t php-dojos .
-docker run -it php-dojos php vendor/bin/phpspec run
+docker-compose up -d
+docker exec -it -u www-data dojos composer install
+```
+
+Then run the tests
+```bash
+docker exec -it -u www-data dojos vendor/bin/phpspec run --format=pretty
 ```

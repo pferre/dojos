@@ -1,6 +1,7 @@
 version: '3'
 services:
   dojos:
+    container_name: dojos
     build: .
     volumes:
       - .:/usr/src/dojos
