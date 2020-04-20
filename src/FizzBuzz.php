@@ -16,14 +16,16 @@ class FizzBuzz
             throw new InvalidArgumentException("{$number} is greater than 100");
         }
 
-        if (3===$number) {
-            return "Fizz";
-        } elseif (5===$number) {
-            return "Buzz";
-        } elseif (0===$number % 3 || 0===$number % 5) {
-            return "FizzBuzz";
+        switch ($number) {
+            case $number === 3:
+                return 'Fizz';
+            case $number === 5:
+                return 'Buzz';
+            case $number % 5 === 0:
+            case $number % 3 === 0:
+                return 'FizzBuzz';
+            default:
+                return (string)$number;
         }
-
-        return $number;
     }
 }

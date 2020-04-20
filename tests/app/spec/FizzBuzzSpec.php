@@ -6,37 +6,37 @@ use PhpSpec\ObjectBehavior;
 
 class FizzBuzzSpec extends ObjectBehavior
 {
-    function it_returns_string_one_for_integer_one()
+    public function it_returns_string_one_for_integer_one(): void
     {
-        $this->execute(1)->shouldReturn("1");
+        $this->execute(1)->shouldReturn('1');
     }
 
-    function it_returns_string_two_for_integer_two()
+    public function it_returns_string_two_for_integer_two(): void
     {
-        $this->execute(2)->shouldReturn("2");
+        $this->execute(2)->shouldReturn('2');
     }
 
-    function it_returns_string_four_for_integer_four()
+    public function it_returns_string_four_for_integer_four(): void
     {
-        $this->execute(4)->shouldReturn("4");
+        $this->execute(4)->shouldReturn('4');
     }
 
-    function it_returns_fizz_for_integer_three()
+    public function it_returns_fizz_for_integer_three(): void
     {
-        $this->execute(3)->shouldReturn("Fizz");
+        $this->execute(3)->shouldReturn('Fizz');
     }
 
-    function it_returns_buzz_for_integer_five()
+    public function it_returns_buzz_for_integer_five(): void
     {
-        $this->execute(5)->shouldReturn("Buzz");
+        $this->execute(5)->shouldReturn('Buzz');
     }
 
-    function it_returns_fizz_buzz_for_both_multiples_of_three_and_five()
+    public function it_returns_fizz_buzz_for_both_multiples_of_three_and_five(): void
     {
-        $this->execute(15)->shouldReturn("FizzBuzz");
+        $this->execute(15)->shouldReturn('FizzBuzz');
     }
 
-    function it_returns_an_error_for_number_greater_than_hundred()
+    public function it_returns_an_error_for_number_greater_than_hundred(): void
     {
         $this->shouldThrow(\InvalidArgumentException::class)->during('execute', [101, 102]);
     }
