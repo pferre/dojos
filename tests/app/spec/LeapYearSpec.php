@@ -6,27 +6,27 @@ use PhpSpec\ObjectBehavior;
 
 class LeapYearSpec extends ObjectBehavior
 {
-    function it_confirms_year_four_is_a_leap_year()
+    public function it_confirms_year_four_is_a_leap_year(): void
     {
         $this->isLeap(4)->shouldReturn(true);
     }
 
-    function it_confirms_year_five_is_not_a_leap_year()
+    public function it_confirms_year_five_is_not_a_leap_year(): void
     {
         $this->isLeap(5)->shouldReturn(false);
     }
 
-    function it_confirms_year_seven_is_not_a_leap_year()
+    public function it_confirms_year_seven_is_not_a_leap_year(): void
     {
         $this->isLeap(7)->shouldReturn(false);
     }
 
-    function it_confirms_year_1001_is_not_a_leap_year()
+    public function it_confirms_year_1001_is_not_a_leap_year(): void
     {
         $this->isLeap(101)->shouldReturn(false);
     }
 
-    function it_confirms_a_leap_year_covers_extra_cases()
+    public function it_confirms_a_leap_year_covers_extra_cases(): void
     {
         $this->isLeap(1700)->shouldReturn(false);
         $this->isLeap(1800)->shouldReturn(false);
