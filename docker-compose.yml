@@ -1,10 +1,10 @@
 version: '3'
 services:
-  dojos:
+  app:
     container_name: dojos
     build: .
     volumes:
-      - .:/usr/src/dojos
+      - .:/usr/src/app
     tty: true
     stdin_open: true
   php:
