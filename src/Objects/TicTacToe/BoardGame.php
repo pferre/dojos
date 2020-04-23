@@ -9,7 +9,7 @@ class BoardGame
 
     public function placeMarker(PlayerMove $playerMove): array
     {
-        $this->board = [$playerMove->position, $playerMove->player];
+        $this->board[$playerMove->position] = $playerMove->position;
 
         return $this->board;
     }
