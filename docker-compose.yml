@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    container_name: dojos
+    container_name: dojo_app
     build: .
     volumes:
       - .:/usr/src/app
