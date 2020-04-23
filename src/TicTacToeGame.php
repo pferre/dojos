@@ -5,6 +5,7 @@ namespace App;
 use App\Objects\TicTacToe\BoardGame;
 use App\Objects\TicTacToe\O;
 use App\Objects\TicTacToe\Player;
+use App\Objects\TicTacToe\PlayerMove;
 use App\Objects\TicTacToe\X;
 
 class TicTacToeGame
@@ -20,9 +21,11 @@ class TicTacToeGame
         $this->currentPlayer = new X();
     }
 
-    public function position($position, $player): array
+    public function position(PlayerMove $playerMove): array
     {
-        return $this->boardGame->placeMarker($player, $position);
+        $this->currentPlayer = $playerMove->player;
+
+        return $this->boardGame->placeMarker($playerMove->player, $playerMove->position);
     }
 
     public function nextPlayer(): Player

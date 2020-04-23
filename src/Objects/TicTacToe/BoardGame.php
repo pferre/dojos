@@ -7,7 +7,7 @@ class BoardGame
     /** @var array */
     private $board = [];
 
-    public function placeMarker(string $player, string $position): array
+    public function placeMarker(Player $player, string $position): array
     {
         $this->board = [$position, $player];
 
