@@ -27,15 +27,10 @@ class TicTacToeGame
 
     public function nextPlayer(): Player
     {
-        if ($this->player instanceof X && !$this->boardGame->emptyBoard()) {
+        if ($this->player instanceof X && !$this->boardGame->isBoardEmpty()) {
             return new O();
         }
 
         return new X();
-    }
-
-    public function emptyBoard(): bool
-    {
-        return empty($this->board);
     }
 }

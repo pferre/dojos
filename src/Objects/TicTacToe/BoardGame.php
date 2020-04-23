@@ -14,7 +14,7 @@ class BoardGame
         return $this->board;
     }
 
-    public function emptyBoard(): bool
+    public function isBoardEmpty(): bool
     {
         return empty($this->board);
     }

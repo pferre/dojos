@@ -17,7 +17,7 @@ class TicTacToeGameSpec extends ObjectBehavior
     public function it_allows_first_player_X_to_mark_position(BoardGame $boardGame): void
     {
         $expected = ['0,2' => 'X'];
-        $boardGame->emptyBoard()->willReturn(false);
+        $boardGame->isBoardEmpty()->willReturn(false);
         $boardGame->placeMarker('X', '0,2')->willReturn(['0,2' => 'X']);
         $this->position('0,2', 'X')->shouldBeEqualTo($expected);
     }
@@ -25,7 +25,7 @@ class TicTacToeGameSpec extends ObjectBehavior
     public function it_makes_sure_O_goes_after_X(BoardGame $boardGame): void
     {
         $expectedPlayer = new O();
-        $boardGame->emptyBoard()->willReturn(false);
+        $boardGame->isBoardEmpty()->willReturn(false);
         $boardGame->placeMarker('X', '0,2')->willReturn(['0,2' => 'X']);
 
         $this->position('0,2', 'X');
@@ -34,7 +34,7 @@ class TicTacToeGameSpec extends ObjectBehavior
 
     public function it_makes_sure_X_always_plays_first(BoardGame $boardGame): void
     {
-        $boardGame->emptyBoard()->willReturn(true);
+        $boardGame->isBoardEmpty()->willReturn(true);
         $this->nextPlayer()->shouldBeAnInstanceOf(X::class);
     }
 }
