@@ -12,12 +12,12 @@ class TicTacToeGame
     /** @var BoardGame */
     private $boardGame;
     /** @var Player */
-    private $player;
+    private $currentPlayer;
 
     public function __construct(BoardGame $boardGame)
     {
         $this->boardGame = $boardGame;
-        $this->player = new X();
+        $this->currentPlayer = new X();
     }
 
     public function position($position, $player): array
@@ -27,10 +27,14 @@ class TicTacToeGame
 
     public function nextPlayer(): Player
     {
-        if ($this->player instanceof X && !$this->boardGame->isBoardEmpty()) {
-            return new O();
+        if ($this->boardGame->isBoardEmpty()) {
+            return new X();
         }
 
-        return new X();
+        if (!$this->currentPlayer instanceof X) {
+            return new X();
+        }
+
+        return new O();
     }
 }

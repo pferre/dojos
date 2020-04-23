@@ -14,7 +14,7 @@ class TicTacToeGameSpec extends ObjectBehavior
         $this->beConstructedWith($boardGame);
     }
 
-    public function it_allows_first_player_X_to_mark_position(BoardGame $boardGame): void
+    public function it_allows_first_player_X_to_mark_any_position(BoardGame $boardGame): void
     {
         $expected = ['0,2' => 'X'];
         $boardGame->isBoardEmpty()->willReturn(false);
