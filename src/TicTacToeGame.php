@@ -25,7 +25,7 @@ class TicTacToeGame
     {
         $this->currentPlayer = $playerMove->player;
 
-        return $this->boardGame->placeMarker($playerMove->player, $playerMove->position);
+        return $this->boardGame->placeMarker($playerMove);
     }
 
     public function nextPlayer(): Player
