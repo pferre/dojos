@@ -11,36 +11,32 @@ use PhpSpec\ObjectBehavior;
 
 class TicTacToeGameSpec extends ObjectBehavior
 {
-    public function let(BoardGame $boardGame): void
-    {
-        $this->beConstructedWith($boardGame);
-    }
-
-    public function it_allows_first_player_X_to_mark_any_position(BoardGame $boardGame): void
+    public function it_allows_first_player_X_to_mark_any_position(): void
     {
         $x = new X();
         $playerMove = $this->createMove($x, '0,2');
-        $boardGame->isBoardEmpty()->willReturn(false);
-        $boardGame->placeMarker($playerMove)->willReturn(['0,2' => $x]);
+        $boardGame = new BoardGame();
+        $expected = $boardGame->placeMarker($playerMove);
 
-        $expected = ['0,2' => $x];
-
+        $this->beConstructedWith($boardGame);
         $this->position($playerMove)->shouldBeEqualTo($expected);
     }
 
-    public function it_makes_sure_O_goes_after_X(BoardGame $boardGame): void
+    public function it_makes_sure_O_goes_after_X(): void
     {
         $playerMove = $this->createMove(new X(), '0,2');
-        $boardGame->isBoardEmpty()->willReturn(false);
-        $boardGame->placeMarker($playerMove)->willReturn(['0,2' => new X()]);
+        $boardGame = new BoardGame();
+        $boardGame->placeMarker($playerMove);
 
+        $this->beConstructedWith($boardGame);
         $this->position($playerMove);
         $this->nextPlayer()->shouldBeLike(new O());
     }
 
-    public function it_makes_sure_X_always_plays_first(BoardGame $boardGame): void
+    public function it_makes_sure_X_always_plays_first(): void
     {
-        $boardGame->isBoardEmpty()->willReturn(true);
+        $boardGame = new BoardGame();
+        $this->beConstructedWith($boardGame);
         $this->nextPlayer()->shouldBeAnInstanceOf(X::class);
     }
 
