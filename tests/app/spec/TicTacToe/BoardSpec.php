@@ -2,6 +2,7 @@
 
 namespace spec\App\TicTacToe;
 
+use App\TicTacToe\Exception\IllegalPlayerMoveException;
 use App\TicTacToe\Factory;
 use App\TicTacToe\O;
 use App\TicTacToe\X;
@@ -26,5 +27,16 @@ class BoardSpec extends ObjectBehavior
         $secondMove = Factory::createMove(Factory::createO(), '0,1');
         $this->add($secondMove);
         $this->nextPlayer()->shouldBeAnInstanceOf(X::class);
+    }
+
+    public function it_ensures_players_cannot_play_on_played_positions(): void
+    {
+        $firstMove = Factory::createMove(Factory::createX(), '0,0');
+        $this->add($firstMove);
+
+        $secondMove = Factory::createMove(Factory::createO(), '0,0');
+        $this
+            ->shouldThrow(IllegalPlayerMoveException::class)
+            ->duringAdd($secondMove);
     }
 }

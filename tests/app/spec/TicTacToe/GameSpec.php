@@ -20,7 +20,7 @@ class GameSpec extends ObjectBehavior
             ->shouldThrow(IllegalPlayerMoveException::class)
             ->duringRun($wrongMove);
 
-        $correctMove = Factory::createMove(new X(), '0,0');
+        $correctMove = Factory::createMove(new X(), '0,1');
         $this->run($correctMove);
     }
 }

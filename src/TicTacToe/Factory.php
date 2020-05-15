@@ -14,7 +14,7 @@ class Factory
         return new X;
     }
 
-    public  static function createMove(Player $player, string $position): PlayerMove
+    public static function createMove(Player $player, string $position): PlayerMove
     {
         return new PlayerMove($position, $player);
     }

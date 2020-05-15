@@ -2,13 +2,23 @@
 
 namespace App\TicTacToe;
 
+use App\TicTacToe\Exception\IllegalPlayerMoveException;
+
 class Board
 {
     /** @var PlayerMove[] */
     private $state;
 
+    /**
+     * @param PlayerMove $move
+     * @throws IllegalPlayerMoveException
+     */
     public function add(PlayerMove $move): void
     {
+        if (!$this->isLegalMove($move)) {
+            throw new IllegalPlayerMoveException('Move is illegal');
+        }
+
         $this->state = [$move];
     }
 
@@ -35,5 +45,18 @@ class Board
         }
 
         return new X();
+    }
+
+    private function isLegalMove(PlayerMove $move): bool
+    {
+        if (null !== $this->state) {
+            foreach ($this->state as $existingMove) {
+                if ($existingMove->position() === $move->position()) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
