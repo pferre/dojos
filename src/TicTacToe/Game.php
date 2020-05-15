@@ -7,15 +7,28 @@ use App\TicTacToe\Exception\IllegalPlayerMoveException;
 class Game
 {
     /**
+     * @var Board
+     */
+    private $board;
+
+    public function __construct()
+    {
+        $this->board = new Board();
+    }
+
+    /**
      * @param PlayerMove $move
+     * @return Board
      * @throws IllegalPlayerMoveException
      */
-    public function run(PlayerMove $move)
+    public function run(PlayerMove $move): Board
     {
-        $state = [$move];
+        $this->board->add($move);
 
-        if (!$state[0]->player() instanceof X) {
+        if (!$this->board->firstPlayer() instanceof X) {
             throw new IllegalPlayerMoveException('Illegal move');
         }
+
+        return $this->board;
     }
 }

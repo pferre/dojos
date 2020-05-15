@@ -15,7 +15,7 @@ class GameSpec extends ObjectBehavior
     /**
      * @throws IllegalPlayerMoveException
      */
-    public function it_ensures_X_always_goes_first(): void
+    public function it_ensures_exception_is_thrown_if_X_is_not_first(): void
     {
         $wrongMove = $this->createMove($this->createO(), '0,0');
         $this
