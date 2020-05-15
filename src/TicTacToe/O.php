@@ -2,7 +2,7 @@
 
 namespace App\TicTacToe;
 
-class O
+class O extends Player
 {
 
     /**

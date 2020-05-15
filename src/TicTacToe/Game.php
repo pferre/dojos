@@ -8,6 +8,10 @@ class Game
 {
     public function run(PlayerMove $move)
     {
-        throw new IllegalPlayerMoveException('Illegal move');
+        $state = [$move];
+
+        if (!$state[0]->player() instanceof X) {
+            throw new IllegalPlayerMoveException('Illegal move');
+        }
     }
 }
