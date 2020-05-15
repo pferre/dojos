@@ -26,7 +26,7 @@ class Game
         $this->board->add($move);
 
         if (!$this->board->firstPlayer() instanceof X) {
-            throw new IllegalPlayerMoveException('Illegal move');
+            throw new IllegalPlayerMoveException('First player is not X');
         }
 
         return $this->board;

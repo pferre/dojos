@@ -15,8 +15,8 @@ class Board
      */
     public function add(PlayerMove $move): void
     {
-        if (!$this->isLegalMove($move)) {
-            throw new IllegalPlayerMoveException('Move is illegal');
+        if (!$this->positionAlreadyTaken($move)) {
+            throw new IllegalPlayerMoveException("Position {$move->position()} already taken!");
         }
 
         $this->state = [$move];
@@ -24,7 +24,7 @@ class Board
 
     public function firstPlayer(): ?Player
     {
-        if (null !== $this->state) {
+        if ($this->stateIsInitialized()) {
             return $this->state[0]->player();
         }
 
@@ -35,7 +35,7 @@ class Board
     {
         $currentPlayer = null;
 
-        if (null !== $this->state) {
+        if ($this->stateIsInitialized()) {
             $latestMove = array_pop($this->state);
             $currentPlayer = $latestMove->player();
         }
@@ -47,9 +47,9 @@ class Board
         return new X();
     }
 
-    private function isLegalMove(PlayerMove $move): bool
+    private function positionAlreadyTaken(PlayerMove $move): bool
     {
-        if (null !== $this->state) {
+        if ($this->stateIsInitialized()) {
             foreach ($this->state as $existingMove) {
                 if ($existingMove->position() === $move->position()) {
                     return false;
@@ -58,5 +58,13 @@ class Board
         }
 
         return true;
+    }
+
+    /**
+     * @return bool
+     */
+    private function stateIsInitialized(): bool
+    {
+        return null !== $this->state;
     }
 }
