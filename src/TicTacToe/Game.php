@@ -6,6 +6,10 @@ use App\TicTacToe\Exception\IllegalPlayerMoveException;
 
 class Game
 {
+    /**
+     * @param PlayerMove $move
+     * @throws IllegalPlayerMoveException
+     */
     public function run(PlayerMove $move)
     {
         $state = [$move];
