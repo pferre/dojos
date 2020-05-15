@@ -2,33 +2,29 @@
 
 namespace spec\App\TicTacToe;
 
+use App\TicTacToe\Factory;
 use App\TicTacToe\O;
-use App\TicTacToe\PlayerMove;
 use App\TicTacToe\X;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class BoardSpec extends ObjectBehavior
 {
     public function it_makes_sure_first_player_on_board_is_X(): void
     {
-        $x = new X();
-        $playerMove = new PlayerMove('0,0', $x);
+        $playerMove = Factory::createMove(Factory::createX(), '0,0');
         $this->add($playerMove);
 
-        $this->firstPlayer()->shouldBe($x);
+        $this->firstPlayer()->shouldBeAnInstanceOf(X::class);
     }
 
     public function it_ensures_players_alternate(): void
     {
-        $x = new X();
-        $o = new O();
-        $firstMove = new PlayerMove('0,0', $x);
+        $firstMove = Factory::createMove(Factory::createX(), '0,0');
         $this->add($firstMove);
-        $this->nextPlayer()->shouldBeLike($o);
+        $this->nextPlayer()->shouldBeAnInstanceOf(O::class);
 
-        $secondMove = new PlayerMove('0,1', $o);
+        $secondMove = Factory::createMove(Factory::createO(), '0,1');
         $this->add($secondMove);
-        $this->nextPlayer()->shouldBeLike($x);
+        $this->nextPlayer()->shouldBeAnInstanceOf(X::class);
     }
 }
